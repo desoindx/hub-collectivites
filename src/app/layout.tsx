@@ -44,8 +44,7 @@ export default function RootLayout({ children }: { children: JSX.Element }) {
               {
                 isActive: true,
                 linkProps: {
-                  href: "#",
-                  target: "_self",
+                  href: "/",
                 },
                 text: "Accueil",
               },
