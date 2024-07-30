@@ -51,7 +51,7 @@ export default function RootLayout({ children }: { children: JSX.Element }) {
               },
             ]}
           />
-          {children}
+          <main>{children}</main>
         </DsfrProvider>
       </body>
     </html>
