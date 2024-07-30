@@ -4,6 +4,7 @@ import { DsfrProvider } from "@codegouvfr/react-dsfr/next-appdir/DsfrProvider";
 import { getHtmlAttributes } from "@codegouvfr/react-dsfr/next-appdir/getHtmlAttributes";
 import Link from "next/link";
 import { StartDsfr } from "./StartDSFR";
+import "./globals.css";
 
 export const metadata = {
   title: "Hub collectivités",

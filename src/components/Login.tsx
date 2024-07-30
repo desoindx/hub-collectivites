@@ -18,8 +18,9 @@ const Login = () => {
       password: email,
       redirect: false,
     });
-
-    console.log(response);
+    if (response) {
+      router.refresh();
+    }
   };
 
   return (
