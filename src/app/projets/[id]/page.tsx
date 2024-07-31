@@ -1,11 +1,10 @@
 import { authOptions } from "@/services/auth";
-import styles from "./page.module.css";
 import { getServerSession } from "next-auth";
 import Login from "@/components/Login";
-import Home from "@/components/Home";
-import { getProjectsByEmail, getProjectById } from "@/repository/projects";
+import { getProjectById } from "@/repository/projects";
 import { redirect } from "next/navigation";
 import Project from "@/components/Project";
+import { getProjectInServiceById } from "@/services/services";
 
 export default async function ProjetPage({
   params,
@@ -22,5 +21,6 @@ export default async function ProjetPage({
     redirect("/");
   }
 
-  return <Project project={project} />;
+  const services = await getProjectInServiceById(params.id);
+  return <Project project={project} services={services} />;
 }
