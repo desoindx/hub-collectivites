@@ -2,6 +2,7 @@ import { Project as ProjectType } from "@/repository/projects";
 import { Service } from "@/services/services";
 import Link from "next/link";
 import React from "react";
+import styles from "./Project.module.css";
 
 const Project = ({
   project,
@@ -19,13 +20,21 @@ const Project = ({
             <h2>{service.service.name}</h2>
             <div>{service.service.description}</div>
             {service.project ? (
-              <Link
-                href={service.project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Voir le projet
-              </Link>
+              <div>
+                {service.project.iframe && (
+                  <iframe
+                    className={styles.iframe}
+                    src={service.project.iframe}
+                  />
+                )}
+                <Link
+                  href={service.project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Voir le projet
+                </Link>
+              </div>
             ) : (
               <Link
                 href={service.service.createUrl(project.id)}

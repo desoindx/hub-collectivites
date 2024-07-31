@@ -21,9 +21,11 @@ export const getProjectInServiceById = (id: string) =>
   Promise.all(
     Object.entries(services).map(async ([slug, service]) => {
       try {
-        const project = await axios.get<{ url: string; data: any }>(
-          service.url(id)
-        );
+        const project = await axios.get<{
+          url: string;
+          iframe?: string;
+          data: any;
+        }>(service.url(id));
         return {
           slug,
           service,
