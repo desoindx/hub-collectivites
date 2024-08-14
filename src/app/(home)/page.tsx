@@ -9,10 +9,10 @@ export default async function HomePage() {
         <div className={classNames(styles.section, styles.presentationSection)}>
             <div className="fr-container">
                 <h1 className={styles.mainTitle}>{"La plateforme d'accompagnement sur mesure pour vos projets"}</h1>
-                <div>{"Accélérer vos projets du quotidien en les orientant le plus en amont possible vers le bon service d'accompagnement"}</div>
-                <Button className={styles.accompagnementButton} linkProps={{href: '#'}}>
-                    Etre accompagné
-                </Button>
+                <div
+                    className="fr-text--lead">{"Accélérer vos projets du quotidien en les orientant le plus en amont possible vers le bon service d'accompagnement"}
+                </div>
+                <Button className={styles.accompagnementButton} linkProps={{href: '#'}}>Etre accompagné</Button>
             </div>
         </div>
         <div className={classNames(styles.section)}>
@@ -64,7 +64,10 @@ export default async function HomePage() {
         <div className={classNames(styles.section, styles.contactSection)}>
             <div className="fr-container">
                 <h2 className={classNames("fr-h2")}>{"Une question, un avis ? Contactez-nous"}</h2>
-                <div>{"Si vous souhaitez contacter l’équipe pour une question, un problème ou simplement donnez votre avis dans le but d’améliorer le service, n’hésitez pas à nous écrire via le formulaire ci-dessous."}</div>
+                <div>
+                    {"Si vous souhaitez contacter l’équipe pour une question, un problème ou simplement donnez votre " +
+                        "avis dans le but d’améliorer le service, n’hésitez pas à nous écrire via le formulaire ci-dessous."}
+                </div>
                 <Button className={styles.contactButton} priority="secondary" linkProps={{href: '#'}}>
                     Contactez-nous
                 </Button>

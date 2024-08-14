@@ -5,6 +5,10 @@
 
 .presentationSection {
     background-color: var(--background-alt-beige-gris-galet);
+    background-image: url("/images/home/location-france.svg");
+    background-size: 350px;
+    background-repeat: no-repeat;
+    background-position: right 15% bottom 100%;
 }
 
 .explanationSection {
