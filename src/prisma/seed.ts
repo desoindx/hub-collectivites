@@ -22,7 +22,7 @@ async function main() {
       {
         name: "Sample service 1",
         slug: "sampleService1",
-        logo: `${process.env.SERVICE_1_URL}/logo1.png`,
+        logo: `${process.env.SERVICE_1_URL}/logo.webp`,
         description: "Avoir des infos sur le score d'un projet",
         projectUrl: `${process.env.SERVICE_1_URL}/api/projects/\${id}`,
         newProjectUrl: `${process.env.SERVICE_1_URL}/projects/\${id}/new`,
@@ -30,7 +30,7 @@ async function main() {
       {
         name: "Sample service 2",
         slug: "sampleService2",
-        logo: `${process.env.SERVICE_1_URL}/logo2.png`,
+        logo: `${process.env.SERVICE_1_URL}/logo.webp`,
         description: "description generique",
         projectUrl: `${process.env.SERVICE_2_URL}/api/projects/\${id}`,
         newProjectUrl: `${process.env.SERVICE_2_URL}/projects/\${id}/new`,

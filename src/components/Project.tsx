@@ -1,50 +1,97 @@
+import { Breadcrumb } from "@codegouvfr/react-dsfr/Breadcrumb";
+import { Button } from "@codegouvfr/react-dsfr/Button";
 import { Project as ProjectType } from "@/repository/projects";
-import { Service } from "@/services/services";
-import Link from "next/link";
+import { Service as ServiceType } from "@/services/services";
 import React from "react";
 import styles from "./Project.module.css";
+import Box from "./Box";
+import classNames from "classnames";
+import Service from "./Service";
 
 const Project = ({
   baseProject,
   services,
 }: {
   baseProject: ProjectType;
-  services: Service[];
+  services: ServiceType[];
 }) => {
   return (
-    <div>
+    <>
+      <Breadcrumb
+        currentPageLabel={baseProject.name}
+        homeLinkProps={{
+          href: "/",
+        }}
+        segments={[
+          {
+            label: "Liste des projets",
+            linkProps: {
+              href: "/",
+            },
+          },
+        ]}
+      />
       <h1>{baseProject.name}</h1>
+      <Box
+        header={
+          <>
+            <h2 className={styles.title}>Description</h2>
+            <Button
+              className={styles.cta}
+              iconId="fr-icon-edit-line"
+              priority="tertiary no outline"
+            >
+              Editer
+            </Button>
+          </>
+        }
+      >
+        {baseProject.description}
+      </Box>
+      <Box
+        header={
+          <>
+            <h2 className={styles.title}>Thématiques</h2>
+            <Button
+              className={styles.cta}
+              iconId="fr-icon-edit-line"
+              priority="tertiary no outline"
+            >
+              Editer
+            </Button>
+          </>
+        }
+      >
+        TODO
+      </Box>
+      <Box
+        header={
+          <>
+            <div>
+              <h2>Services aidants</h2>
+              <span className={classNames("fr-text--sm", styles.subtitle)}>
+                Les services de l’écosystème qui répondent à votre problématique
+              </span>
+            </div>
+            <div className={styles.tag}>
+              {services.length} identifié
+              {services.length > 1 ? "s" : ""}
+            </div>
+          </>
+        }
+      >
+        TODO
+      </Box>
       <div>
-        {services.map(({ service, project }) => (
-          <div key={service.slug}>
-            <h2>{service.name}</h2>
-            <div>{service.description}</div>
-            {project ? (
-              <div>
-                {project.iframe && (
-                  <iframe className={styles.iframe} src={project.iframe} />
-                )}
-                <Link
-                  href={project.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Etre accompagné
-                </Link>
-              </div>
-            ) : (
-              <Link
-                href={service.newProjectUrl.replace("${id}", baseProject.id)}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Voir le service
-              </Link>
-            )}
-          </div>
+        {services.map((service) => (
+          <Service
+            key={service.service.slug}
+            service={service}
+            id={baseProject.id}
+          />
         ))}
       </div>
-    </div>
+    </>
   );
 };
 

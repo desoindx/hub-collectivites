@@ -1,0 +1,18 @@
+.box {
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-default-grey);
+  margin-bottom: 1.5rem;
+}
+
+.header {
+  padding: 1rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+  background-color: var(--background-alt-blue-france);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content {
+  padding: 1rem;
+}

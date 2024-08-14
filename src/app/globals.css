@@ -2,3 +2,7 @@ main {
   position: relative;
   padding: 2rem;
 }
+
+h1, h2, h3, h4 {
+  color: var(--text-title-blue-france)
+}

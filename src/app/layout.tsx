@@ -26,32 +26,7 @@ export default function RootLayout({ children }: { children: JSX.Element }) {
         />
       </head>
       <body>
-        <DsfrProvider lang={lang}>
-          <Header
-            brandTop={
-              <>
-                REPUBLIQUE
-                <br />
-                FRANÇAISE
-              </>
-            }
-            homeLinkProps={{
-              href: "/",
-              title: "Accueil - Hub collectivités",
-            }}
-            id="fr-header-simple-header"
-            navigation={[
-              {
-                isActive: true,
-                linkProps: {
-                  href: "/",
-                },
-                text: "Accueil",
-              },
-            ]}
-          />
-          <main>{children}</main>
-        </DsfrProvider>
+        <DsfrProvider lang={lang}>{children}</DsfrProvider>
       </body>
     </html>
   );

@@ -1,0 +1,30 @@
+.container {
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-default-grey);
+}
+
+.header {
+  display: flex;
+  gap: 1.5rem;
+  padding-right: 1rem;
+  align-items: center;
+}
+
+.logo {
+  border-radius: calc(0.5rem - 1px) 0 0 0;
+  height: 5rem;
+  width: 5rem;
+}
+
+.mainHeader {
+  flex: 1;
+}
+
+.title {
+  margin-bottom: 0.5rem;
+}
+
+.iframe {
+  width: 100%;
+  border: solid 1px black;
+}
