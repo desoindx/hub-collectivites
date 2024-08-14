@@ -1,4 +1,5 @@
 import { getProjectById } from "@/repository/projects";
+import { getProjectInServiceById } from "@/services/services";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
@@ -7,7 +8,8 @@ export async function GET(
 ) {
   const project = await getProjectById(context.params.id);
   if (project) {
-    return NextResponse.json(project);
+    const services = await getProjectInServiceById(project.id);
+    return NextResponse.json({ ...project, services });
   }
 
   return NextResponse.json("Not found", { status: 404 });

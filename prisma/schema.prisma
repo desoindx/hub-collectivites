@@ -30,3 +30,21 @@ model Project {
   description String
   owner       String
 }
+
+model Service {
+  id            String           @id @default(cuid())
+  name          String
+  slug          String
+  logo          String
+  description   String
+  projectUrl    String
+  newProjectUrl String
+  contexts      ServiceContext[]
+}
+
+model ServiceContext {
+  id          String  @id @default(cuid())
+  serviceId   String
+  service     Service @relation(fields: [serviceId], references: [id])
+  description String?
+}

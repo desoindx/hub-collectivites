@@ -22,5 +22,5 @@ export default async function ProjetPage({
   }
 
   const services = await getProjectInServiceById(params.id);
-  return <Project project={project} services={services} />;
+  return <Project baseProject={project} services={services} />;
 }

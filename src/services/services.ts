@@ -1,44 +1,41 @@
 import axios from "axios";
+import { prisma } from "./prisma";
 
-const services = {
-  service1: {
-    name: "Sample service 1",
-    description: "Avoir des infos sur le score d'un projet",
-    url: (id: string) => `${process.env.SERVICE_1_URL}/api/projects/${id}`,
-    createUrl: (id: string) =>
-      `${process.env.SERVICE_1_URL}/projects/${id}/new`,
-  },
-  service2: {
-    name: "Sample service 2",
-    description: "Avoir des infos sur l'efficacité d'un projet",
-    url: (id: string) => `${process.env.SERVICE_2_URL}/api/projects/${id}`,
-    createUrl: (id: string) =>
-      `${process.env.SERVICE_2_URL}/projects/${id}/new`,
-  },
-};
+export const getProjectInServiceById = async (id: string) => {
+  const services = await prisma.service.findMany({
+    include: {
+      contexts: true,
+    },
+  });
 
-export const getProjectInServiceById = (id: string) =>
-  Promise.all(
-    Object.entries(services).map(async ([slug, service]) => {
+  return Promise.all(
+    services.map(async (service) => {
+      const context = service.contexts[0];
+      const serviceData = {
+        slug: service.slug,
+        name: service.name,
+        logo: service.logo,
+        newProjectUrl: service.newProjectUrl,
+        description: context.description || service.description,
+      };
       try {
         const project = await axios.get<{
           url: string;
           iframe?: string;
           data: any;
-        }>(service.url(id));
+        }>(service.projectUrl.replace("${id}", id));
         return {
-          slug,
-          service,
+          service: serviceData,
           project: project.data,
         };
       } catch {
         return {
-          slug,
-          service,
+          service: serviceData,
         };
       }
     })
   );
+};
 
 export type Service = Awaited<
   ReturnType<typeof getProjectInServiceById>

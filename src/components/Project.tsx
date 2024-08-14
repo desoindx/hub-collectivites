@@ -5,43 +5,40 @@ import React from "react";
 import styles from "./Project.module.css";
 
 const Project = ({
-  project,
+  baseProject,
   services,
 }: {
-  project: ProjectType;
+  baseProject: ProjectType;
   services: Service[];
 }) => {
   return (
     <div>
-      <h1>{project.name}</h1>
+      <h1>{baseProject.name}</h1>
       <div>
-        {services.map((service) => (
+        {services.map(({ service, project }) => (
           <div key={service.slug}>
-            <h2>{service.service.name}</h2>
-            <div>{service.service.description}</div>
-            {service.project ? (
+            <h2>{service.name}</h2>
+            <div>{service.description}</div>
+            {project ? (
               <div>
-                {service.project.iframe && (
-                  <iframe
-                    className={styles.iframe}
-                    src={service.project.iframe}
-                  />
+                {project.iframe && (
+                  <iframe className={styles.iframe} src={project.iframe} />
                 )}
                 <Link
-                  href={service.project.url}
+                  href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Voir le projet
+                  Etre accompagné
                 </Link>
               </div>
             ) : (
               <Link
-                href={service.service.createUrl(project.id)}
+                href={service.newProjectUrl.replace("${id}", baseProject.id)}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Importer le projet
+                Voir le service
               </Link>
             )}
           </div>
