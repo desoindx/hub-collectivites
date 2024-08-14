@@ -22,10 +22,10 @@ export default async function HomePage() {
                     <div className="fr-tile__body">
                         <div className="fr-tile__content">
                             <div className={classNames("fr-tile__title", styles.logoImages)}>
-                                <Image src={"/images/home/logo-mte.png"}
+                                <Image src={"/images/home/logo-mte.jpg"}
                                        alt="Logo du ministère de la transition Ecologique"
                                        width={116} height={120}/>
-                                <Image src={"/images/home/logo-anct.png"}
+                                <Image src={"/images/home/logo-anct.jpg"}
                                        alt="Logo de l'ANCT"
                                        width={211} height={121}/>
                                 <Image src={"/images/home/logo-ademe.png"} alt="Logo de l'ADEME"
