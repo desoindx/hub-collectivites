@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "./Service.module.css";
 import { Service as ServiceType } from "@/services/services";
-import Link from "next/link";
 import Button from "@codegouvfr/react-dsfr/Button";
+import IFrameResized from "./IFrameResized";
+import classNames from "classnames";
 
 const Service = ({ id, service }: { id: string; service: ServiceType }) => {
   const { service: serviceData, project } = service;
@@ -12,12 +13,13 @@ const Service = ({ id, service }: { id: string; service: ServiceType }) => {
         <img className={styles.logo} src={serviceData.logo} alt=""></img>
         <div className={styles.mainHeader}>
           <h3 className={styles.title}>{serviceData.name}</h3>
-          <span className="fr-text--sm">{serviceData.description}</span>
+          <span className={classNames("fr-text--sm", styles.description)}>
+            {serviceData.description}
+          </span>
         </div>
         {project ? (
           <Button
-            iconId="fr-icon-external-link-line"
-            iconPosition="right"
+            className={styles.button}
             linkProps={{
               href: project.url,
               target: "_blank",
@@ -29,8 +31,7 @@ const Service = ({ id, service }: { id: string; service: ServiceType }) => {
           </Button>
         ) : (
           <Button
-            iconId="fr-icon-external-link-line"
-            iconPosition="right"
+            className={styles.button}
             linkProps={{
               href: serviceData.newProjectUrl.replace("${id}", id),
               target: "_blank",
@@ -42,10 +43,10 @@ const Service = ({ id, service }: { id: string; service: ServiceType }) => {
           </Button>
         )}
       </div>
-      {project && (
-        <div>
+      {project && project.iframe && (
+        <div className={styles.content}>
           {project.iframe && (
-            <iframe className={styles.iframe} src={project.iframe} />
+            <IFrameResized src={project.iframe} className={styles.iframe} />
           )}
         </div>
       )}

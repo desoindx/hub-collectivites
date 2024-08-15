@@ -26,7 +26,7 @@ const Project = ({
           {
             label: "Liste des projets",
             linkProps: {
-              href: "/",
+              href: "/projets",
             },
           },
         ]}
@@ -80,17 +80,16 @@ const Project = ({
           </>
         }
       >
-        TODO
+        <div className={styles.services}>
+          {services.map((service) => (
+            <Service
+              key={service.service.slug}
+              service={service}
+              id={baseProject.id}
+            />
+          ))}
+        </div>
       </Box>
-      <div>
-        {services.map((service) => (
-          <Service
-            key={service.service.slug}
-            service={service}
-            id={baseProject.id}
-          />
-        ))}
-      </div>
     </>
   );
 };
