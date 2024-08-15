@@ -15,7 +15,7 @@ export const getProjectInServiceById = async (id: string) => {
         slug: service.slug,
         name: service.name,
         logo: service.logo,
-        newProjectUrl: service.newProjectUrl,
+        newProjectUrl: context.newProjectUrl || service.newProjectUrl,
         description: context.description || service.description,
       };
       try {
