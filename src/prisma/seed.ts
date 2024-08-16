@@ -30,7 +30,7 @@ async function main() {
       {
         name: "Sample service 2",
         slug: "sampleService2",
-        logo: `${process.env.SERVICE_1_URL}/logo.webp`,
+        logo: `${process.env.SERVICE_2_URL}/logo.webp`,
         description: "description generique",
         projectUrl: `${process.env.SERVICE_2_URL}/api/projects/\${id}`,
         newProjectUrl: `${process.env.SERVICE_2_URL}/projects/\${id}/new`,

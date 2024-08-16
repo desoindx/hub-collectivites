@@ -20,3 +20,9 @@
   font-weight: 700;
   line-height: 1.25rem;
 }
+
+.services {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}

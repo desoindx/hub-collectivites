@@ -5,6 +5,7 @@
 
 .header {
   display: flex;
+  flex-wrap: wrap;
   gap: 1.5rem;
   padding-right: 1rem;
   align-items: center;
@@ -24,7 +25,22 @@
   margin-bottom: 0.5rem;
 }
 
+.title, .button {
+  width: max-content;
+}
+
+.description {
+  display: block;
+  width: max-content;
+  margin-bottom: 0;
+}
+
+.content {
+  border-top: 1px solid var(--border-default-grey);
+  padding: 1.5rem 1rem;
+}
+
 .iframe {
   width: 100%;
-  border: solid 1px black;
+  border: none;
 }

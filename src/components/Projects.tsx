@@ -2,13 +2,20 @@ import React from "react";
 import Logout from "./Logout";
 import { Project } from "@/repository/projects";
 import Link from "next/link";
+import Breadcrumb from "@codegouvfr/react-dsfr/Breadcrumb";
 
 const Home = ({ email, projects }: { email: string; projects: Project[] }) => {
   return (
     <>
+      <Breadcrumb
+        currentPageLabel="Liste des projets"
+        homeLinkProps={{
+          href: "/",
+        }}
+        segments={[]}
+      />
       <Logout />
-      <div>Hello {email}</div>
-      <div>Mes projets : </div>
+      <h1>Mes projets</h1>
       <ul>
         {projects.map((project) => (
           <li key={project.id}>
