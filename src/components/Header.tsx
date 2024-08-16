@@ -29,7 +29,7 @@ const Header = ({ activePage }: { activePage: string }) => {
           linkProps: {
             href: "/creation-projet",
           },
-          text: "Sasir un projet",
+          text: "Saisir un projet",
         },        {
           isActive: activePage === "/projets",
           linkProps: {
