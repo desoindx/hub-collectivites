@@ -5,6 +5,7 @@ import { getHtmlAttributes } from "@codegouvfr/react-dsfr/next-appdir/getHtmlAtt
 import Link from "next/link";
 import { StartDsfr } from "./StartDSFR";
 import "./globals.css";
+import {Toaster} from "react-hot-toast";
 
 export const metadata = {
   title: "Hub collectivités",
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: { children: JSX.Element }) {
       </head>
       <body>
         <DsfrProvider lang={lang}>{children}</DsfrProvider>
+        <Toaster position="bottom-left" />
       </body>
     </html>
   );

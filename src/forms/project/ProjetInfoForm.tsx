@@ -4,15 +4,23 @@ import Button from "@codegouvfr/react-dsfr/Button";
 import {ProjetInfoFormData, ProjetInfoFormSchema} from "@/forms/project/ProjetInfoFormSchema";
 import InputFormField from "@/components/InputFormField";
 import {zodResolver} from "@hookform/resolvers/zod";
+import {createProjectAction} from "@/actions/project/createProjetAction";
+import {notifications} from "@/services/notificaction";
+import {useRouter} from "next/navigation";
 
 export const ProjetInfoForm = () => {
+  const router = useRouter();
   const form = useForm<ProjetInfoFormData>({
     resolver: zodResolver(ProjetInfoFormSchema),
     defaultValues: {nom: "", description: ""}
   });
 
   const onSubmit: SubmitHandler<ProjetInfoFormData> = async (data) => {
-    console.log("Création d'un projet", data)
+    const result = await createProjectAction(data);
+    notifications(result.type, result.message);
+    if (result.type === "success" && result.createdProject) {
+      router.push(`/projet/${result.createdProject.id}`);
+    }
   };
 
   return (
