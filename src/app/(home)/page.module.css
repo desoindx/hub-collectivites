@@ -1,0 +1,49 @@
+.section {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.presentationSection {
+  background-color: var(--background-alt-beige-gris-galet);
+  background-image: url("/images/home/location-france.svg");
+  background-size: 350px;
+  background-repeat: no-repeat;
+  background-position: right 15% bottom 100%;
+}
+
+.explanationSection {
+  background-color: var(--background-alt-blue-france);
+}
+
+.contactSection {
+  background-color: var(--background-alt-grey);
+}
+
+.mainTitle {
+  max-width: 45rem;
+}
+
+.logoImages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  align-items: center;
+}
+
+.explanationSteps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.explanationStep {
+  width: 30%;
+  min-width: 20rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.button {
+  margin-top: 2rem;
+}
