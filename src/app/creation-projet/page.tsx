@@ -1,7 +1,7 @@
 import {authOptions} from "@/services/auth";
 import {getServerSession} from "next-auth";
 import Login from "@/components/Login";
-import {ProjetInfoForm} from "@/forms/project/ProjetInfoForm";
+import {ProjectInfoForm} from "@/forms/project/ProjectInfoForm";
 import Image from "next/image";
 import styles from "./page.module.css";
 import classNames from "classnames";
@@ -18,7 +18,7 @@ export default async function ProjectsPage() {
     </div>
     <hr/>
     <div className={classNames("fr-container", styles.form)}>
-      <ProjetInfoForm/>
+      <ProjectInfoForm/>
     </div>
   </div>;
 }

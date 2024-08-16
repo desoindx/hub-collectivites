@@ -1,5 +1,5 @@
 "use server";
-import {ProjetInfoFormData, ProjetInfoFormSchema} from "@/forms/project/ProjetInfoFormSchema";
+import {ProjectInfoFormData, ProjectInfoFormSchema} from "@/forms/project/ProjectInfoFormSchema";
 import {getServerSession} from "next-auth";
 import {ResponseAction} from "@/actions/actions-types";
 import {Project} from "@prisma/client";
@@ -7,14 +7,14 @@ import {authOptions} from "@/services/auth";
 import {createProject} from "@/repository/projects";
 
 export const createProjectAction = async (
-  data: ProjetInfoFormData,
+  data: ProjectInfoFormData,
 ): Promise<ResponseAction<{ createdProject?: Project | null }>> => {
 
   const session = await getServerSession(authOptions);
   if (!session || !session.user?.email) {
     return {type: "error", message: "UNAUTHENTICATED"};
   }
-  const parseParamResult = ProjetInfoFormSchema.safeParse(data);
+  const parseParamResult = ProjectInfoFormSchema.safeParse(data);
   if (!parseParamResult.success) {
     return {type: "error", message: "PARSING_ERROR"};
   }

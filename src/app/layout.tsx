@@ -1,9 +1,8 @@
-import { Header } from "@codegouvfr/react-dsfr/Header";
-import { DsfrHead } from "@codegouvfr/react-dsfr/next-appdir/DsfrHead";
-import { DsfrProvider } from "@codegouvfr/react-dsfr/next-appdir/DsfrProvider";
-import { getHtmlAttributes } from "@codegouvfr/react-dsfr/next-appdir/getHtmlAttributes";
+import {DsfrHead} from "@codegouvfr/react-dsfr/next-appdir/DsfrHead";
+import {DsfrProvider} from "@codegouvfr/react-dsfr/next-appdir/DsfrProvider";
+import {getHtmlAttributes} from "@codegouvfr/react-dsfr/next-appdir/getHtmlAttributes";
 import Link from "next/link";
-import { StartDsfr } from "./StartDSFR";
+import {StartDsfr} from "./StartDSFR";
 import "./globals.css";
 import {Toaster} from "react-hot-toast";
 
