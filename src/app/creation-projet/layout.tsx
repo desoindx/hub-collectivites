@@ -4,7 +4,7 @@ export default function ProjectCreationLayout({ children }: { children: JSX.Elem
   return (
     <>
       <Header activePage="/creation-projet" />
-      <main className="fr-container fr-container--fluid">{children}</main>
+      <main className="fr-container--fluid">{children}</main>
     </>
   );
 }

@@ -1,0 +1,27 @@
+.page {
+  padding-top: 2rem;;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.headerTitle {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.createProjectIcon {
+  width: 8rem;
+  @media screen and (max-width: 576px) {
+    display: none;
+  }
+}
+
+.form {
+  @media screen and (min-width: 576px) {
+    padding-left: 9.5rem;
+  }
+}
