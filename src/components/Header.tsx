@@ -1,18 +1,12 @@
 "use client";
 import { Header as HeaderDSFR } from "@codegouvfr/react-dsfr/Header";
 import { ROUTES } from "@/app/routes";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 
 const Header = () => {
   const pathname = usePathname();
   const session = useSession();
-
-  const router = useRouter();
-
-  const onLogout = async () => {
-    router.push(ROUTES.DECONNEXION);
-  };
 
   const navigationItems =
     session.status !== "authenticated"
@@ -66,7 +60,15 @@ const Header = () => {
       navigation={navigationItems}
       quickAccessItems={
         session.status !== "authenticated"
-          ? []
+          ? [
+            {
+              linkProps: {
+                href: ROUTES.CONNEXION,
+              },
+              iconId: "fr-icon-lock-line",
+              text: "Se connecter",
+            },
+          ]
           : [
               {
                 linkProps: {
