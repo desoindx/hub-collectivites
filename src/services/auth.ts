@@ -72,10 +72,9 @@ export const authOptions: NextAuthOptions = {
       profile: async (profile) => {
         return {
           id: profile.email,
-          prenom: profile.given_name,
-          nom: profile.usual_name,
+          firstname: profile.given_name,
+          lastname: profile.usual_name,
           email: profile.email,
-          poste: profile.belonging_population,
           agentconnect_info: profile
         };
       }
