@@ -5,13 +5,7 @@ import React, { useRef, useState } from "react";
 import classNames from "classnames";
 import styles from "./IFrameResized.module.css";
 
-const IFrameResized = ({
-  src,
-  className,
-}: {
-  src: string;
-  className: string;
-}) => {
+const IFrameResized = ({ src, className }: { src: string; className: string }) => {
   const iframeRef = useRef(null);
   const [ready, setReady] = useState(false);
   return (

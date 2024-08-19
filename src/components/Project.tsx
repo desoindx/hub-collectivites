@@ -8,13 +8,7 @@ import Box from "./Box";
 import classNames from "classnames";
 import Service from "./Service";
 
-const Project = ({
-  baseProject,
-  services,
-}: {
-  baseProject: ProjectType;
-  services: ServiceType[];
-}) => {
+const Project = ({ baseProject, services }: { baseProject: ProjectType; services: ServiceType[] }) => {
   return (
     <>
       <Breadcrumb
@@ -36,11 +30,7 @@ const Project = ({
         header={
           <>
             <h2 className={styles.title}>Description</h2>
-            <Button
-              className={styles.cta}
-              iconId="fr-icon-edit-line"
-              priority="tertiary no outline"
-            >
+            <Button className={styles.cta} iconId="fr-icon-edit-line" priority="tertiary no outline">
               Editer
             </Button>
           </>
@@ -52,11 +42,7 @@ const Project = ({
         header={
           <>
             <h2 className={styles.title}>Thématiques</h2>
-            <Button
-              className={styles.cta}
-              iconId="fr-icon-edit-line"
-              priority="tertiary no outline"
-            >
+            <Button className={styles.cta} iconId="fr-icon-edit-line" priority="tertiary no outline">
               Editer
             </Button>
           </>
@@ -82,11 +68,7 @@ const Project = ({
       >
         <div className={styles.services}>
           {services.map((service) => (
-            <Service
-              key={service.service.slug}
-              service={service}
-              id={baseProject.id}
-            />
+            <Service key={service.service.slug} service={service} id={baseProject.id} />
           ))}
         </div>
       </Box>

@@ -1,4 +1,4 @@
-import {NotificationsMessage, NotificationsType} from "@/services/notificaction";
+import { NotificationsMessage, NotificationsType } from "@/services/notificaction";
 
 export type ResponseAction<T = {}> = {
   type?: NotificationsType;

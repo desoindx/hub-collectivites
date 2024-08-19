@@ -13,9 +13,7 @@ const Service = ({ id, service }: { id: string; service: ServiceType }) => {
         <img className={styles.logo} src={serviceData.logo} alt=""></img>
         <div className={styles.mainHeader}>
           <h3 className={styles.title}>{serviceData.name}</h3>
-          <span className={classNames("fr-text--sm", styles.description)}>
-            {serviceData.description}
-          </span>
+          <span className={classNames("fr-text--sm", styles.description)}>{serviceData.description}</span>
         </div>
         {project ? (
           <Button
@@ -45,9 +43,7 @@ const Service = ({ id, service }: { id: string; service: ServiceType }) => {
       </div>
       {project && project.iframe && (
         <div className={styles.content}>
-          {project.iframe && (
-            <IFrameResized src={project.iframe} className={styles.iframe} />
-          )}
+          {project.iframe && <IFrameResized src={project.iframe} className={styles.iframe} />}
         </div>
       )}
     </div>

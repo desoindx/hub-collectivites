@@ -6,11 +6,7 @@ import { redirect } from "next/navigation";
 import Project from "@/components/Project";
 import { getProjectInServiceById } from "@/services/services";
 
-export default async function ProjetPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default async function ProjectPage({ params }: { params: { id: string } }) {
   const session = await getServerSession(authOptions);
   if (!session || !session.user || !session.user.email) {
     return <Login />;

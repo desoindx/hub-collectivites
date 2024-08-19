@@ -25,7 +25,8 @@
   margin-bottom: 0.5rem;
 }
 
-.title, .button {
+.title,
+.button {
   width: max-content;
 }
 

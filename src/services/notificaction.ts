@@ -1,6 +1,5 @@
 import toast from "react-hot-toast";
 
-
 export const success = {
   PROJECT_CREATED: "Vous projet a bien été créé.",
 };

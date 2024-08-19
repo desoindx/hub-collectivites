@@ -33,10 +33,8 @@ export const getProjectInServiceById = async (id: string) => {
           service: serviceData,
         };
       }
-    })
+    }),
   );
 };
 
-export type Service = Awaited<
-  ReturnType<typeof getProjectInServiceById>
->[number];
+export type Service = Awaited<ReturnType<typeof getProjectInServiceById>>[number];

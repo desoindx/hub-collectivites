@@ -9,7 +9,6 @@ import { ResponseAction } from "@/types/actions";
 export const createProjectAction = async (
   data: ProjectInfoFormData,
 ): Promise<ResponseAction<{ createdProject?: Project | null }>> => {
-
   const session = await getServerSession(authOptions);
   if (!session || !session.user?.email) {
     return { type: "error", message: "UNAUTHENTICATED" };
@@ -19,5 +18,9 @@ export const createProjectAction = async (
     return { type: "error", message: "PARSING_ERROR" };
   }
   const project = await createProject(data, session.user.email);
-  return { type: "success", createdProject: project, message: "PROJECT_CREATED" };
+  return {
+    type: "success",
+    createdProject: project,
+    message: "PROJECT_CREATED",
+  };
 };
