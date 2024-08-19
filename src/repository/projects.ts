@@ -7,7 +7,7 @@ export const getProjectById = (id: string) => prisma.project.findFirst({ where: 
 
 export const createProject = (data: ProjectInfoFormData, ownerEmail: string) =>
   prisma.project.create({
-    data: { name: data.nom, description: data.description, owner: ownerEmail },
+    data: { name: data.nom, description: data.description, owner: ownerEmail }
   });
 
 export type Project = Exclude<Awaited<ReturnType<typeof getProjectsByEmail>>, null>[number];
