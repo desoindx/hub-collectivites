@@ -25,6 +25,13 @@ const Header = ({ activePage }: { activePage: string }) => {
           text: "Accueil",
         },
         {
+          isActive: activePage === "/creation-projet",
+          linkProps: {
+            href: "/creation-projet",
+          },
+          text: "Saisir un projet",
+        },
+        {
           isActive: activePage === "/projets",
           linkProps: {
             href: "/projets",
