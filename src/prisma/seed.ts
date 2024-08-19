@@ -9,7 +9,7 @@ async function main() {
     data: Array.from({ length: 100 }).map(() => ({
       name: faker.lorem.sentence({ min: 2, max: 10 }),
       description: faker.lorem.paragraph(),
-      owner: `user-${faker.number.int({ min: 1, max: 10 })}@test.fr`,
+      owner: `hub-collectivite-${faker.number.int({ min: 1, max: 10 })}@yopmail.com`,
     })),
   });
 
