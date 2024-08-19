@@ -1,14 +1,20 @@
 "use client";
 import { Header as HeaderDSFR } from "@codegouvfr/react-dsfr/Header";
 import { ROUTES } from "@/app/routes";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 
 const Header = () => {
   const pathname = usePathname();
   const session = useSession();
 
-  const navigationLinks =
+  const router = useRouter();
+
+  const onLogout = async () => {
+    router.push(ROUTES.DECONNEXION);
+  };
+
+  const navigationItems =
     session.status !== "authenticated"
       ? [
           {
@@ -57,7 +63,20 @@ const Header = () => {
         title: "Accueil - Hub collectivités",
       }}
       id="fr-header-simple-header"
-      navigation={navigationLinks}
+      navigation={navigationItems}
+      quickAccessItems={
+        session.status !== "authenticated"
+          ? []
+          : [
+              {
+                linkProps: {
+                  href: ROUTES.DECONNEXION,
+                },
+                iconId: "ri-logout-box-line",
+                text: "Se déconnecter",
+              },
+            ]
+      }
     />
   );
 };
