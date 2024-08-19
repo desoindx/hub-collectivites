@@ -8,7 +8,7 @@ import { ROUTES } from "@/app/routes";
 
 export const authOptions: NextAuthOptions = {
   session: {
-    strategy: "jwt", // Use JSON Web Tokens (JWT) for session management
+    strategy: "jwt",
   },
   pages: {
     signIn: ROUTES.CONNEXION,

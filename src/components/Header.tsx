@@ -61,14 +61,14 @@ const Header = () => {
       quickAccessItems={
         session.status !== "authenticated"
           ? [
-            {
-              linkProps: {
-                href: ROUTES.CONNEXION,
+              {
+                linkProps: {
+                  href: ROUTES.CONNEXION,
+                },
+                iconId: "fr-icon-lock-line",
+                text: "Se connecter",
               },
-              iconId: "fr-icon-lock-line",
-              text: "Se connecter",
-            },
-          ]
+            ]
           : [
               {
                 linkProps: {

@@ -1,12 +1,11 @@
-import { authOptions } from "@/services/auth";
-import { getServerSession } from "next-auth";
+import { auth } from "@/services/auth";
 import { getProjectById } from "@/repository/projects";
 import { redirect } from "next/navigation";
 import Project from "@/components/Project";
 import { getProjectInServiceById } from "@/services/services";
 
 export default async function ProjectPage({ params }: { params: { id: string } }) {
-  const session = await getServerSession(authOptions);
+  const session = await auth();
   const project = await getProjectById(params.id);
   if (!project || project.owner !== session?.user.email) {
     redirect("/");
