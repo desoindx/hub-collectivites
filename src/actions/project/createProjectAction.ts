@@ -1,10 +1,10 @@
 "use server";
-import {ProjectInfoFormData, ProjectInfoFormSchema} from "@/forms/project/ProjectInfoFormSchema";
-import {getServerSession} from "next-auth";
-import {ResponseAction} from "@/actions/actions-types";
-import {Project} from "@prisma/client";
-import {authOptions} from "@/services/auth";
-import {createProject} from "@/repository/projects";
+import { ProjectInfoFormData, ProjectInfoFormSchema } from "@/forms/project/ProjectInfoFormSchema";
+import { getServerSession } from "next-auth";
+import { Project } from "@prisma/client";
+import { authOptions } from "@/services/auth";
+import { createProject } from "@/repository/projects";
+import { ResponseAction } from "@/types/actions";
 
 export const createProjectAction = async (
   data: ProjectInfoFormData,
@@ -12,12 +12,12 @@ export const createProjectAction = async (
 
   const session = await getServerSession(authOptions);
   if (!session || !session.user?.email) {
-    return {type: "error", message: "UNAUTHENTICATED"};
+    return { type: "error", message: "UNAUTHENTICATED" };
   }
   const parseParamResult = ProjectInfoFormSchema.safeParse(data);
   if (!parseParamResult.success) {
-    return {type: "error", message: "PARSING_ERROR"};
+    return { type: "error", message: "PARSING_ERROR" };
   }
-  const project = await createProject(data.nom, data.description, session.user.email);
-  return {type: "success", createdProject: project, message: "PROJECT_CREATED"};
+  const project = await createProject(data, session.user.email);
+  return { type: "success", createdProject: project, message: "PROJECT_CREATED" };
 };
