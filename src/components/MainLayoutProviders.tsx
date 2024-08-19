@@ -8,7 +8,7 @@ export default function MainLayoutProviders({ children, lang }: PropsWithChildre
   return (
     <SessionProvider>
       <DsfrProvider lang={lang}>
-          {children}
+        {children}
         <Toaster position="bottom-left" />
       </DsfrProvider>
     </SessionProvider>

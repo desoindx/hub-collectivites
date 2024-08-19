@@ -8,10 +8,10 @@ import { ROUTES } from "@/app/routes";
 
 export const authOptions: NextAuthOptions = {
   session: {
-    strategy: "jwt" // Use JSON Web Tokens (JWT) for session management
+    strategy: "jwt", // Use JSON Web Tokens (JWT) for session management
   },
   pages: {
-    signIn: ROUTES.CONNEXION
+    signIn: ROUTES.CONNEXION,
   },
   callbacks: {
     async jwt({ token, account, user }) {
@@ -25,7 +25,7 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token }) {
       session.user.id = token.user_id;
       return { ...session, id_token: token.id_token, provider: token.provider, user_id: token.user_id };
-    }
+    },
   },
   adapter: PrismaAdapter(prismaClient),
   secret: process.env.NEXTAUTH_SECRET,
@@ -46,28 +46,28 @@ export const authOptions: NextAuthOptions = {
           acr_values: "eidas1",
           redirect_uri: process.env.NEXT_PUBLIC_URL_SITE + "/api/auth/callback/agentconnect",
           nonce: uuidv4(),
-          state: uuidv4()
-        }
+          state: uuidv4(),
+        },
       },
       client: {
         authorization_signed_response_alg: "HS256",
         id_token_signed_response_alg: "HS256",
         userinfo_encrypted_response_alg: "HS256",
         userinfo_signed_response_alg: "HS256",
-        userinfo_encrypted_response_enc: "HS256"
+        userinfo_encrypted_response_enc: "HS256",
       },
       userinfo: {
         async request(context) {
           const userInfo = await fetch(process.env.AGENT_CONNECT_BASE_URL + "/v2/userinfo", {
             method: "GET",
             headers: {
-              Authorization: `Bearer ${context.tokens.access_token}`
-            }
+              Authorization: `Bearer ${context.tokens.access_token}`,
+            },
           }).then((res) => {
             return res.text();
           });
           return JSON.parse(Buffer.from(userInfo.split(".")[1], "base64").toString());
-        }
+        },
       },
       profile: async (profile) => {
         return {
@@ -75,11 +75,11 @@ export const authOptions: NextAuthOptions = {
           firstname: profile.given_name,
           lastname: profile.usual_name,
           email: profile.email,
-          agentconnect_info: profile
+          agentconnect_info: profile,
         };
-      }
-    }
-  ]
+      },
+    },
+  ],
 };
 
 // Use it in server contexts

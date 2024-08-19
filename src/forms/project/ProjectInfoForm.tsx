@@ -13,7 +13,7 @@ export const ProjectInfoForm = () => {
   const router = useRouter();
   const form = useForm<ProjectInfoFormData>({
     resolver: zodResolver(ProjectInfoFormSchema),
-    defaultValues: { nom: "", description: "" }
+    defaultValues: { nom: "", description: "" },
   });
 
   const onSubmit: SubmitHandler<ProjectInfoFormData> = async (data) => {

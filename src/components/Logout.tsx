@@ -8,7 +8,6 @@ import { useRouter } from "next/navigation";
 import { ROUTES } from "@/app/routes";
 
 const Logout = () => {
-
   const router = useRouter();
 
   const onLogout = async () => {

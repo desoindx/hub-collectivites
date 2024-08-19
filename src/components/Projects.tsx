@@ -11,7 +11,7 @@ const Home = ({ email, projects }: { email: string; projects: Project[] }) => {
       <Breadcrumb
         currentPageLabel="Liste des projets"
         homeLinkProps={{
-          href: "/"
+          href: "/",
         }}
         segments={[]}
       />

@@ -8,36 +8,40 @@ const Header = () => {
   const pathname = usePathname();
   const session = useSession();
 
-  const navigationLinks = session.status !== "authenticated" ? [{
-    isActive: pathname === "/",
-    linkProps: {
-      href: "/"
-    },
-    text: "Accueil"
-  }] : [
-    {
-      isActive: pathname === "/",
-      linkProps: {
-        href: "/"
-      },
-      text: "Accueil"
-    },
-    {
-      isActive: pathname === ROUTES.CREATION_PROJET,
-      linkProps: {
-        href: ROUTES.CREATION_PROJET
-      },
-      text: "Saisir un projet"
-    },
-    {
-      isActive: pathname?.startsWith(ROUTES.LISTE_PROJETS) && pathname !== ROUTES.CREATION_PROJET,
-      linkProps: {
-        href: ROUTES.LISTE_PROJETS
-      },
-      text: "Gérer mes projets"
-    }
-  ];
-
+  const navigationLinks =
+    session.status !== "authenticated"
+      ? [
+          {
+            isActive: pathname === "/",
+            linkProps: {
+              href: "/",
+            },
+            text: "Accueil",
+          },
+        ]
+      : [
+          {
+            isActive: pathname === "/",
+            linkProps: {
+              href: "/",
+            },
+            text: "Accueil",
+          },
+          {
+            isActive: pathname === ROUTES.CREATION_PROJET,
+            linkProps: {
+              href: ROUTES.CREATION_PROJET,
+            },
+            text: "Saisir un projet",
+          },
+          {
+            isActive: pathname?.startsWith(ROUTES.LISTE_PROJETS) && pathname !== ROUTES.CREATION_PROJET,
+            linkProps: {
+              href: ROUTES.LISTE_PROJETS,
+            },
+            text: "Gérer mes projets",
+          },
+        ];
 
   return (
     <HeaderDSFR
@@ -50,7 +54,7 @@ const Header = () => {
       }
       homeLinkProps={{
         href: "/",
-        title: "Accueil - Hub collectivités"
+        title: "Accueil - Hub collectivités",
       }}
       id="fr-header-simple-header"
       navigation={navigationLinks}
