@@ -4,8 +4,29 @@ import { getServerSession, NextAuthOptions } from "next-auth";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { GetServerSidePropsContext, NextApiRequest, NextApiResponse } from "next";
 import prismaClient from "@/prisma/prismaClient";
+import { ROUTES } from "@/app/routes";
 
 export const authOptions: NextAuthOptions = {
+  session: {
+    strategy: "jwt" // Use JSON Web Tokens (JWT) for session management
+  },
+  pages: {
+    signIn: ROUTES.CONNEXION
+  },
+  callbacks: {
+    async jwt({ token, account, user }) {
+      if (account) {
+        token.id_token = account.id_token;
+        token.provider = account.provider;
+        token.user_id = user.id;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      session.user.id = token.user_id;
+      return { ...session, id_token: token.id_token, provider: token.provider, user_id: token.user_id };
+    }
+  },
   adapter: PrismaAdapter(prismaClient),
   secret: process.env.NEXTAUTH_SECRET,
   providers: [

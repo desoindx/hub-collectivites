@@ -7,6 +7,7 @@ import styles from "./Project.module.css";
 import Box from "./Box";
 import classNames from "classnames";
 import Service from "./Service";
+import { ROUTES } from "@/app/routes";
 
 const Project = ({ baseProject, services }: { baseProject: ProjectType; services: ServiceType[] }) => {
   return (
@@ -20,7 +21,7 @@ const Project = ({ baseProject, services }: { baseProject: ProjectType; services
           {
             label: "Liste des projets",
             linkProps: {
-              href: "/projets",
+              href: ROUTES.LISTE_PROJETS,
             },
           },
         ]}

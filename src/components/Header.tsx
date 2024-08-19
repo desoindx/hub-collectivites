@@ -1,7 +1,10 @@
-import React from "react";
+"use client";
 import { Header as HeaderDSFR } from "@codegouvfr/react-dsfr/Header";
+import { ROUTES } from "@/app/routes";
+import { usePathname } from "next/navigation";
 
-const Header = ({ activePage }: { activePage: string }) => {
+const Header = () => {
+  const pathname = usePathname();
   return (
     <HeaderDSFR
       brandTop={
@@ -13,31 +16,31 @@ const Header = ({ activePage }: { activePage: string }) => {
       }
       homeLinkProps={{
         href: "/",
-        title: "Accueil - Hub collectivités",
+        title: "Accueil - Hub collectivités"
       }}
       id="fr-header-simple-header"
       navigation={[
         {
-          isActive: activePage === "/",
+          isActive: pathname === "/",
           linkProps: {
-            href: "/",
+            href: "/"
           },
-          text: "Accueil",
+          text: "Accueil"
         },
         {
-          isActive: activePage === "/creation-projet",
+          isActive: pathname === ROUTES.CREATION_PROJET,
           linkProps: {
-            href: "/creation-projet",
+            href: ROUTES.CREATION_PROJET
           },
-          text: "Saisir un projet",
+          text: "Saisir un projet"
         },
         {
-          isActive: activePage === "/projets",
+          isActive: pathname?.startsWith(ROUTES.LISTE_PROJETS) && pathname !== ROUTES.CREATION_PROJET,
           linkProps: {
-            href: "/projets",
+            href: ROUTES.LISTE_PROJETS
           },
-          text: "Gérer mes projets",
-        },
+          text: "Gérer mes projets"
+        }
       ]}
     />
   );

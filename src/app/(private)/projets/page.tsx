@@ -1,5 +1,4 @@
 import { authOptions } from "@/services/auth";
-import styles from "./page.module.css";
 import { getServerSession } from "next-auth";
 import Login from "@/components/Login";
 import Projects from "@/components/Projects";

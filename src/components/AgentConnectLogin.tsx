@@ -2,8 +2,9 @@
 
 import { signIn } from "next-auth/react";
 import React from "react";
+import { ROUTES } from "@/app/routes";
 
-const Login = ({ callbackUrl = process.env.NEXT_PUBLIC_URL_SITE + "/projets" }: { callbackUrl?: string }) => {
+const Login = ({ callbackUrl = process.env.NEXT_PUBLIC_URL_SITE + ROUTES.LISTE_PROJETS }: { callbackUrl?: string }) => {
 
   const handleSignIn = () => signIn("agentconnect", { callbackUrl: callbackUrl });
 
