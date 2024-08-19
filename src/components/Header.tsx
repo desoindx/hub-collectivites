@@ -30,7 +30,8 @@ const Header = ({ activePage }: { activePage: string }) => {
             href: "/creation-projet",
           },
           text: "Saisir un projet",
-        },        {
+        },
+        {
           isActive: activePage === "/projets",
           linkProps: {
             href: "/projets",
