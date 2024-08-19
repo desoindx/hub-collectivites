@@ -8,7 +8,13 @@ const Header = () => {
   const pathname = usePathname();
   const session = useSession();
 
-  const navigationLinks = session.status !== "authenticated" ? [] : [
+  const navigationLinks = session.status !== "authenticated" ? [{
+    isActive: pathname === "/",
+    linkProps: {
+      href: "/"
+    },
+    text: "Accueil"
+  }] : [
     {
       isActive: pathname === "/",
       linkProps: {
