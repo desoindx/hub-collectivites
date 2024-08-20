@@ -26,3 +26,13 @@
   flex-direction: column;
   gap: 1.5rem;
 }
+
+.thematiques {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+.thematique {
+  background-color: var(--background-alt-blue-france);
+}

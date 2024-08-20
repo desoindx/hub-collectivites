@@ -7,10 +7,11 @@ import { getProjectInServiceById } from "@/services/services";
 export default async function ProjectPage({ params }: { params: { id: string } }) {
   const session = await auth();
   const project = await getProjectById(params.id);
+
   if (!project || project.owner !== session?.user.email) {
     redirect("/");
   }
 
-  const services = await getProjectInServiceById(params.id);
+  const services = await getProjectInServiceById(project);
   return <Project baseProject={project} services={services} />;
 }

@@ -1,0 +1,11 @@
+.tag {
+  background-color: var(--background-alt-blue-france);
+
+  &:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.button {
+  width: max-content;
+}

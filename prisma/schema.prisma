@@ -13,6 +13,40 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Thematique {
+  CULTURE
+  EAU
+  ENERGIE
+  MOBILITE
+}
+
+enum SousThematique {
+  // CULTURE
+  ART_PLASTIQUES
+  MEDIAS
+  MUSEE
+  //EAU
+  ASSAINISSEMENT
+  PLUVIALE
+  POTABLE
+  //ENERGIE
+  ECONOMIE
+  RECYCLAGE
+  DISTRIBUTION
+  //MOBILITE
+  CONNAISSANCE
+  INFORMATION
+  URBAINE
+}
+
+enum Status {
+  QUESTIONNEMENT
+  PRIORISATION
+  REDACTION
+  LANCEMENT
+  EVALUATION
+}
+
 model Account {
   id                String  @id @default(cuid())
   userId            String  @map("user_id")
@@ -47,10 +81,14 @@ model User {
 }
 
 model Project {
-  id          String @id @default(cuid())
-  name        String
-  description String
-  owner       String
+  id              String           @id @default(cuid())
+  createdAt       DateTime         @default(now())
+  name            String
+  description     String
+  owner           String
+  status          Status
+  thematiques     Thematique[]
+  sousThematiques SousThematique[]
 }
 
 model Service {
@@ -65,9 +103,10 @@ model Service {
 }
 
 model ServiceContext {
-  id            String  @id @default(cuid())
+  id            String       @id @default(cuid())
   serviceId     String
-  service       Service @relation(fields: [serviceId], references: [id])
+  service       Service      @relation(fields: [serviceId], references: [id])
   description   String?
   newProjectUrl String?
+  thematiques   Thematique[]
 }
