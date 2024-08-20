@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { createProjectAction } from "@/actions/project/createProjectAction";
 import { notifications } from "@/services/notificaction";
 import { useRouter } from "next/navigation";
+import { ROUTES } from "@/app/routes";
 
 export const ProjectInfoForm = () => {
   const router = useRouter();
@@ -19,7 +20,7 @@ export const ProjectInfoForm = () => {
     const result = await createProjectAction(data);
     notifications(result.type, result.message);
     if (result.type === "success" && result.createdProject) {
-      router.push(`/projets/${result.createdProject.id}`);
+      router.push(ROUTES.FICHE_PROJET(result.createdProject.id));
     }
   };
 

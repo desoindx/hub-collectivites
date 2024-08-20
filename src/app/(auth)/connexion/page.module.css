@@ -1,0 +1,26 @@
+.page {
+  display: flex;
+  align-items: center;
+}
+
+.connexionSection {
+  width: 50%;
+  padding-right: 2rem;
+  @media screen and (max-width: 576px) {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+.imageSection {
+  width: 50%;
+  background-color: var(--background-alt-grey);
+  @media screen and (max-width: 576px) {
+    display: none;
+  }
+}
+
+.image {
+  display: block;
+  margin: auto;
+}

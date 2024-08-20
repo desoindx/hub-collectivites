@@ -14,7 +14,7 @@ export default async function HomePage() {
             Accélérer vos projets du quotidien en les orientant le plus en amont possible vers le bon service
             d'accompagnement
           </div>
-          <Button className={styles.button} linkProps={{ href: "#" }}>
+          <Button className={styles.button} linkProps={{ href: "/connexion" }}>
             Etre accompagné
           </Button>
         </div>
