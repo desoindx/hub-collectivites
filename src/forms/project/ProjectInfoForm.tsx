@@ -34,16 +34,10 @@ export const ProjectInfoForm = () => {
 
   useEffect(() => {
     const existingSousThematiques = form.getValues("sousThematiques");
-    console.log(
-      existingSousThematiques.filter((sousThematique) =>
-        sousThematiquesInfo[sousThematique].thematiques.some((thematique) => selectedThematiques.includes(thematique)),
-      ),
-    );
     form.setValue(
-      "sousThematiques",
-      existingSousThematiques.filter((sousThematique) =>
-        sousThematiquesInfo[sousThematique].thematiques.some((thematique) => selectedThematiques.includes(thematique)),
-      ),
+      // @ts-ignore
+      "sousThematiques", existingSousThematiques.filter((sousThematique) =>
+        sousThematiquesInfo[sousThematique].thematiques.some((thematique) => selectedThematiques.includes(thematique))),
     );
   }, [selectedThematiques]);
 

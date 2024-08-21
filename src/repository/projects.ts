@@ -14,7 +14,7 @@ export const createProject = (data: ProjectInfoFormData, ownerEmail: string) =>
       owner: ownerEmail,
       status: Status.EVALUATION,
       thematiques: data.thematiques,
-      sousThematiques: [SousThematique.ART_PLASTIQUES],
+      sousThematiques: data.sousThematiques,
     },
   });
 
