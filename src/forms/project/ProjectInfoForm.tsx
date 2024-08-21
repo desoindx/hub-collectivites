@@ -35,8 +35,8 @@ export const ProjectInfoForm = () => {
   useEffect(() => {
     const existingSousThematiques = form.getValues("sousThematiques");
     form.setValue(
-      // @ts-ignore
       "sousThematiques",
+      // @ts-ignore
       existingSousThematiques.filter((sousThematique) =>
         sousThematiquesInfo[sousThematique].thematiques.some((thematique) => selectedThematiques.includes(thematique)),
       ),
