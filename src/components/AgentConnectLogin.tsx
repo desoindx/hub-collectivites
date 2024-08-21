@@ -3,7 +3,6 @@
 import { signIn } from "next-auth/react";
 import React from "react";
 import { ROUTES } from "@/app/routes";
-import FakeLogin from "./FakeLogin";
 
 const Login = ({ callbackUrl = process.env.NEXT_PUBLIC_URL_SITE + ROUTES.LISTE_PROJETS }: { callbackUrl?: string }) => {
   const handleSignIn = () => signIn("agentconnect", { callbackUrl: callbackUrl });
@@ -24,10 +23,6 @@ const Login = ({ callbackUrl = process.env.NEXT_PUBLIC_URL_SITE + ROUTES.LISTE_P
           Qu’est-ce que AgentConnect ?
         </a>
       </p>
-      <div>
-        ---------- FAKE CONNECTION ---------
-        <FakeLogin />
-      </div>
     </div>
   );
 };
