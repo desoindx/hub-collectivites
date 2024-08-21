@@ -1,15 +1,19 @@
 import { faker } from "@faker-js/faker";
-import { PrismaClient, Service } from "@prisma/client";
+import { PrismaClient, Service, SousThematique, Status, Thematique } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
 async function main() {
-  await Promise.all([prisma.project.deleteMany(), prisma.serviceContext.deleteMany(), prisma.service.deleteMany()]);
+  await Promise.all([prisma.project.deleteMany(), prisma.serviceContext.deleteMany()]);
+  await prisma.service.deleteMany();
   await prisma.project.createMany({
     data: Array.from({ length: 100 }).map(() => ({
       name: faker.lorem.sentence({ min: 2, max: 10 }),
       description: faker.lorem.paragraph(),
       owner: `hub-collectivite-${faker.number.int({ min: 1, max: 10 })}@yopmail.com`,
+      status: faker.helpers.enumValue(Status),
+      thematiques: faker.helpers.arrayElements(Object.values(Thematique), { min: 1, max: 3 }),
+      sousThematiques: faker.helpers.arrayElements(Object.values(SousThematique), { min: 1, max: 3 }),
     })),
   });
 
@@ -47,7 +51,13 @@ async function main() {
       },
       {
         serviceId: (services.find((service) => service.name === "Sample service 2") as Service).id,
-        description: "Avoir des infos sur l'efficaticté d'un projet",
+        thematiques: [Thematique.CULTURE],
+        description: "Avoir des infos sur l'efficacité d'un projet culture",
+      },
+      {
+        serviceId: (services.find((service) => service.name === "Sample service 2") as Service).id,
+        thematiques: [Thematique.EAU],
+        description: "Avoir des infos sur l'efficacité d'un projet eau",
       },
     ],
   });

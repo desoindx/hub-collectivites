@@ -8,6 +8,8 @@ import Box from "./Box";
 import classNames from "classnames";
 import Service from "./Service";
 import { ROUTES } from "@/app/routes";
+import { OptionBadge } from "./SearchableSelect/OptionBadge";
+import { thematiquesLabel } from "@/services/thematiques";
 
 const Project = ({ baseProject, services }: { baseProject: ProjectType; services: ServiceType[] }) => {
   return (
@@ -49,7 +51,13 @@ const Project = ({ baseProject, services }: { baseProject: ProjectType; services
           </>
         }
       >
-        TODO
+        <div className={styles.thematiques}>
+          {baseProject.thematiques.map((thematique) => (
+            <div key={thematique} className={classNames("fr-tag", styles.thematique)}>
+              {thematiquesLabel[thematique]}
+            </div>
+          ))}
+        </div>
       </Box>
       <Box
         header={

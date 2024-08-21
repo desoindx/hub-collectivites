@@ -15,12 +15,15 @@
 
 .createProjectIcon {
   width: 8rem;
+
   @media screen and (max-width: 576px) {
     display: none;
   }
 }
 
 .form {
+  margin-bottom: 20rem;
+
   @media screen and (min-width: 576px) {
     padding-left: 9.5rem;
   }
