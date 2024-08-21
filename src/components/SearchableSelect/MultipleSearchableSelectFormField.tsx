@@ -4,10 +4,10 @@ import MultipleSearchableSelect, { MultipleSearchableSelectProps } from "./Multi
 import classNames from "classnames";
 
 const MultipleSearchableSelectFormField = <T extends FieldValues>({
-                                                                    control,
-                                                                    path,
-                                                                    ...rest
-                                                                  }: {
+  control,
+  path,
+  ...rest
+}: {
   control: Control<T>;
   path: FieldPath<T>;
 } & Omit<MultipleSearchableSelectProps, "value" | "onSelect">) => {
@@ -22,15 +22,11 @@ const MultipleSearchableSelectFormField = <T extends FieldValues>({
             value={value}
             onSelect={(values) => onChange(values.map((value) => value.value))}
           />
-          {error && (
-            <p className={classNames("fr-error-text",  "fr-mb-3v")}>
-              {error.message}
-            </p>
-          )}
+          {error && <p className={classNames("fr-error-text", "fr-mb-3v")}>{error.message}</p>}
         </div>
-      )
-      }
-    />);
+      )}
+    />
+  );
 };
 
 export default MultipleSearchableSelectFormField;
