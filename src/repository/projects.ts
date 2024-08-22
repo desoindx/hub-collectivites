@@ -19,8 +19,8 @@ export const createProject = (data: ProjectInfoFormData, ownerId: string) =>
         create: {
           user_id: ownerId,
           role: "ADMIN",
-        }
-      }
+        },
+      },
     },
   });
 
