@@ -8,7 +8,7 @@ import { thematiquesLabel } from "@/services/thematiques";
 import Button from "@codegouvfr/react-dsfr/Button";
 import classNames from "classnames";
 import styles from "./Projects.module.css";
-const Home = ({ email, projects }: { email: string; projects: Project[] }) => {
+const Home = ({ projects }: { projects: Project[] }) => {
   return (
     <>
       <Breadcrumb

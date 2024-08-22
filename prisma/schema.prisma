@@ -25,15 +25,15 @@ enum SousThematique {
   ART_PLASTIQUES
   MEDIAS
   MUSEE
-  //EAU
+  // EAU
   ASSAINISSEMENT
   PLUVIALE
   POTABLE
-  //ENERGIE
+  // ENERGIE
   ECONOMIE
   RECYCLAGE
   DISTRIBUTION
-  //MOBILITE
+  // MOBILITE
   CONNAISSANCE
   INFORMATION
   URBAINE
@@ -67,17 +67,20 @@ model Account {
 }
 
 model User {
-  id                String    @id @default(cuid())
-  lastname          String?
-  firstname         String?
-  email             String?   @unique
-  password          String?
-  emailVerified     DateTime?
-  image             String?
-  createdAt         DateTime  @default(now())
-  updatedAt         DateTime  @updatedAt
-  agentconnect_info Json?
-  Account           Account[]
+  id                   String         @id @default(cuid())
+  lastname             String?
+  firstname            String?
+  email                String?        @unique
+  password             String?
+  emailVerified        DateTime?
+  image                String?
+  createdAt            DateTime       @default(now())
+  updatedAt            DateTime       @updatedAt
+  agentconnect_info    Json?
+  Account              Account[]
+  projects             user_project[] @relation(name: "project_access")
+  user_project_deleted user_project[] @relation(name: "user_project_deleter")
+  projects_created     Project[]
 }
 
 model Project {
@@ -85,10 +88,31 @@ model Project {
   createdAt       DateTime         @default(now())
   name            String
   description     String
-  owner           String
+  ownerUserId     String
+  owner           User             @relation(fields: [ownerUserId], references: [id])
   status          Status
   thematiques     Thematique[]
   sousThematiques SousThematique[]
+  user_projects   user_project[]
+}
+
+enum RoleProject {
+  ADMIN
+}
+
+model user_project {
+  id         Int         @id @default(autoincrement())
+  role       RoleProject
+  project_id String
+  project    Project     @relation(fields: [project_id], references: [id])
+  user_id    String
+  user       User        @relation(name: "project_access", fields: [user_id], references: [id])
+  created_at DateTime    @default(now())
+  deleted_at DateTime?
+  deleted_by String?
+  deleter    User?       @relation(name: "user_project_deleter", fields: [deleted_by], references: [id])
+
+  @@unique([user_id, project_id])
 }
 
 model Service {

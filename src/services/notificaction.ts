@@ -6,6 +6,8 @@ export const success = {
 
 export const error = {
   UNAUTHENTICATED: "Vous devez être authentifié pour effectuer cette requête.",
+  UNAUTHORIZED_PROJECT: "Vous n'avez pas accès à ce projet.",
+  UNAUTHORIZED_USER: "Vous n'avez pas accès à cet utilisateur.",
   PARSING_ERROR: "Erreur de validation des données envoyées.",
 };
 
