@@ -4,12 +4,10 @@ import { PrismaClient, Service, SousThematique, Status, Thematique } from "@pris
 const prisma = new PrismaClient();
 
 async function main() {
-  await Promise.all([
-    prisma.user_project.deleteMany(),
-    prisma.project.deleteMany(),
-    prisma.serviceContext.deleteMany(),
-    prisma.user.deleteMany(),
-  ]);
+  await prisma.user_project.deleteMany();
+  await prisma.project.deleteMany();
+  await prisma.account.deleteMany();
+  await Promise.all([prisma.serviceContext.deleteMany(), prisma.user.deleteMany()]);
   await prisma.service.deleteMany();
   await prisma.user.createMany({
     data: Array.from(Array(10).keys()).map((index) => ({
