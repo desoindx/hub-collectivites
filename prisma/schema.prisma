@@ -105,8 +105,8 @@ model user_project {
   role       RoleProject
   project_id String
   project    Project     @relation(fields: [project_id], references: [id])
-  user_id    String?
-  user       User?       @relation(name: "project_access", fields: [user_id], references: [id])
+  user_id    String
+  user       User        @relation(name: "project_access", fields: [user_id], references: [id])
   created_at DateTime    @default(now())
   deleted_at DateTime?
   deleted_by String?
