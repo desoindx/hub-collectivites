@@ -8,7 +8,7 @@ export default async function ProjectPage({ params }: { params: { id: string } }
   const session = await auth();
   const project = await getProjectById(params.id);
 
-  if (!project || project.owner !== session?.user.email) {
+  if (!project || project.ownerUserId !== session?.user.id) {
     redirect("/");
   }
 

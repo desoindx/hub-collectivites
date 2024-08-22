@@ -1,6 +1,6 @@
 import { auth } from "@/services/auth";
 import Projects from "@/components/Projects";
-import { getProjectsByEmail } from "@/repository/projects";
+import { getProjectsByUserId } from "@/repository/projects";
 
 export default async function ProjectsPage() {
   const session = await auth();
@@ -8,6 +8,6 @@ export default async function ProjectsPage() {
     return null;
   }
 
-  const projects = await getProjectsByEmail(session.user.email);
-  return <Projects email={session.user.email} projects={projects} />;
+  const projects = await getProjectsByUserId(session.user.id);
+  return <Projects projects={projects} />;
 }

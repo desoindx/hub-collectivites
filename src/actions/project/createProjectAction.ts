@@ -16,7 +16,7 @@ export const createProjectAction = async (
   if (!parseParamResult.success) {
     return { type: "error", message: "PARSING_ERROR" };
   }
-  const project = await createProject(data, session.user.email);
+  const project = await createProject(data, session.user.id);
   return {
     type: "success",
     createdProject: project,
