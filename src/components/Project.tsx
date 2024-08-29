@@ -10,6 +10,7 @@ import Service from "./Service";
 import { ROUTES } from "@/app/routes";
 import { OptionBadge } from "./SearchableSelect/OptionBadge";
 import { thematiquesLabel } from "@/services/thematiques";
+import { statusLabel } from "@/services/status";
 
 const Project = ({ baseProject, services }: { baseProject: ProjectType; services: ServiceType[] }) => {
   return (
@@ -40,6 +41,15 @@ const Project = ({ baseProject, services }: { baseProject: ProjectType; services
         }
       >
         {baseProject.description}
+      </Box>
+      <Box
+        header={
+          <>
+            <h2 className={styles.title}>Statut</h2>
+          </>
+        }
+      >
+        {statusLabel[baseProject.status]}
       </Box>
       <Box
         header={
