@@ -25,7 +25,7 @@ const Service = ({ id, service }: { id: string; service: ServiceType }) => {
             }}
             priority="tertiary no outline"
           >
-            Etre accompagné
+            {serviceData.newProjectLabel || "Etre accompagné"}
           </Button>
         ) : (
           <Button
@@ -37,7 +37,7 @@ const Service = ({ id, service }: { id: string; service: ServiceType }) => {
             }}
             priority="tertiary no outline"
           >
-            Voir le service
+            {serviceData.projectLabel || "Voir le service"}
           </Button>
         )}
       </div>

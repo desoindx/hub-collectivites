@@ -118,21 +118,25 @@ model user_project {
 }
 
 model Service {
-  id            String           @id @default(cuid())
-  name          String
-  slug          String
-  logo          String
-  description   String
-  projectUrl    String
-  newProjectUrl String
-  contexts      ServiceContext[]
+  id              String           @id @default(cuid())
+  name            String
+  slug            String
+  logo            String
+  description     String
+  projectUrl      String
+  newProjectUrl   String
+  projectLabel    String?
+  newProjectLabel String?
+  contexts        ServiceContext[]
 }
 
 model ServiceContext {
-  id            String       @id @default(cuid())
-  serviceId     String
-  service       Service      @relation(fields: [serviceId], references: [id])
-  description   String?
-  newProjectUrl String?
-  thematiques   Thematique[]
+  id              String       @id @default(cuid())
+  serviceId       String
+  service         Service      @relation(fields: [serviceId], references: [id])
+  description     String?
+  newProjectUrl   String?
+  thematiques     Thematique[]
+  projectLabel    String?
+  newProjectLabel String?
 }

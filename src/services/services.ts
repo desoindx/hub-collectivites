@@ -24,6 +24,8 @@ export const getProjectInServiceById = async (project: Project) => {
               ...service,
               newProjectUrl: context.newProjectUrl || service.newProjectUrl,
               description: context.description || service.description,
+              projectLabel: context.projectLabel || service.projectLabel,
+              newProjectLabel: context.newProjectLabel || service.newProjectLabel,
             }
           : undefined;
       })
@@ -35,6 +37,8 @@ export const getProjectInServiceById = async (project: Project) => {
           name: service.name,
           description: service.description,
           newProjectUrl: service.newProjectUrl,
+          projectLabel: service.projectLabel,
+          newProjectLabel: service.newProjectLabel,
         };
 
         try {

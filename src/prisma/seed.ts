@@ -66,6 +66,7 @@ async function main() {
         description: "description generique",
         projectUrl: `${process.env.SERVICE_2_URL}/api/projects/\${id}`,
         newProjectUrl: `${process.env.SERVICE_2_URL}/projects/\${id}/new`,
+        projectLabel: "Decouvrir les possibilités",
       },
     ],
   });
@@ -90,6 +91,8 @@ async function main() {
         serviceId: (services.find((service) => service.name === "Sample service 2") as Service).id,
         thematiques: [Thematique.EAU],
         description: "Avoir des infos sur l'efficacité d'un projet eau",
+        projectLabel: "Decouvrir les possibilités avec l'eau",
+        newProjectLabel: "Voir l'eau économisé",
       },
     ],
   });
