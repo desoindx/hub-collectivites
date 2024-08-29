@@ -40,11 +40,13 @@ enum SousThematique {
 }
 
 enum Status {
-  QUESTIONNEMENT
-  PRIORISATION
-  REDACTION
-  LANCEMENT
-  EVALUATION
+  IDEE
+  FAISABILITE
+  A_VENIR
+  EN_COURS
+  EN_PAUSE
+  ABANDONNE
+  TERMINE
 }
 
 model Account {

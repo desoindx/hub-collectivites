@@ -26,7 +26,7 @@ export const createProject = (data: ProjectInfoFormData, ownerId: string) =>
       name: data.nom,
       description: data.description,
       ownerUserId: ownerId,
-      status: Status.EVALUATION,
+      status: Status.EN_COURS,
       thematiques: data.thematiques,
       sousThematiques: data.sousThematiques,
       user_projects: {

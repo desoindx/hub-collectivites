@@ -20,7 +20,7 @@ const Home = ({ projects }: { projects: Project[] }) => {
       />
       <Table
         caption="Gérer mes projets"
-        headers={["Intitulé", "Étape", "Thématiques", "Date de dépôt", "Action"]}
+        headers={["Intitulé", "Statut", "Thématiques", "Date de dépôt", "Action"]}
         data={projects.map((project) => [
           project.name,
           statusLabel[project.status],
