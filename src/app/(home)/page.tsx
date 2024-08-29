@@ -41,6 +41,7 @@ export default async function HomePage() {
           </div>
         </div>
       </div>
+      {/*
       <div className={classNames(styles.section, styles.explanationSection)}>
         <div className="fr-container">
           <h2 className="fr-h2">Simple et concret pour les collectivités</h2>
@@ -67,6 +68,7 @@ export default async function HomePage() {
           </div>
         </div>
       </div>
+      */}
       <div className={classNames(styles.section, styles.contactSection)}>
         <div className="fr-container">
           <h2 className="fr-h2">Une question, un avis ? Contactez-nous</h2>
