@@ -192,7 +192,7 @@ export const thematiquesLabel: Record<Thematique, string> = {
   recoco_503: "Recyclage foncier",
   recoco_307: "Concessionnaires réseaux",
   recoco_476: "Etude de faisabilité",
-  recoco_472: "Etanchéité"
+  recoco_472: "Etanchéité",
 };
 
 export const sousThematiquesInfo: Record<
@@ -204,14 +204,14 @@ export const sousThematiquesInfo: Record<
 > = {
   tet_33: {
     label: "Gestion des déchets : recyclage, réemploi, valorisation des déchets",
-    thematiques: [Thematique.tet_4]
+    thematiques: [Thematique.tet_4],
   },
   tet_37: { label: "Développement des énergies renouvelables", thematiques: [Thematique.tet_5] },
   tet_55: { label: "Biodiversité", thematiques: [Thematique.tet_7] },
   tet_28: { label: "Consommation responsable et achats durables", thematiques: [Thematique.tet_4] },
   tet_40: {
     label: "Gestion de l’énergie : maîtrise et réduction des consommations énergétiques",
-    thematiques: [Thematique.tet_5]
+    thematiques: [Thematique.tet_5],
   },
   tet_53: { label: "Modes actifs (vélo, marche)", thematiques: [Thematique.tet_6] },
   tet_39: { label: "Efficacité énergétique", thematiques: [Thematique.tet_5] },
@@ -231,7 +231,7 @@ export const sousThematiquesInfo: Record<
   tet_90: { label: "Equipement public", thematiques: [Thematique.tet_10] },
   tet_83: {
     label: "Partenariats et coopération (publique, privé, associatif, international, infra et supra collectivité)",
-    thematiques: [Thematique.tet_9]
+    thematiques: [Thematique.tet_9],
   },
   tet_51: { label: "Mobilité partagée", thematiques: [Thematique.tet_6] },
   tet_54: { label: "Transports collectifs et intermodalité", thematiques: [Thematique.tet_6] },
@@ -272,8 +272,9 @@ export const sousThematiquesInfo: Record<
   tet_92: { label: "Espaces verts", thematiques: [Thematique.tet_10] },
   tet_121: { label: "Formation", thematiques: [Thematique.tet_12] },
   tet_72: {
-    label: "Lutte contre la précarité des conditions de vie (insécurité alimentaire, précarité énergétique, sanitaire, liée au logement, à la mobilité…)",
-    thematiques: [Thematique.tet_8]
+    label:
+      "Lutte contre la précarité des conditions de vie (insécurité alimentaire, précarité énergétique, sanitaire, liée au logement, à la mobilité…)",
+    thematiques: [Thematique.tet_8],
   },
   tet_6: { label: "Economie sociale et solidaire", thematiques: [Thematique.tet_1] },
   tet_47: { label: "Limitation des déplacements subis", thematiques: [Thematique.tet_6] },
@@ -326,5 +327,5 @@ export const sousThematiquesInfo: Record<
   tet_50: { label: "Mobilité fluviale", thematiques: [Thematique.tet_6] },
   tet_115: { label: "Littoral", thematiques: [Thematique.tet_7] },
   tet_89: { label: "Cimetières et funéraire", thematiques: [Thematique.tet_10] },
-  tet_17: { label: "Musée", thematiques: [Thematique.tet_2] }
+  tet_17: { label: "Musée", thematiques: [Thematique.tet_2] },
 };
