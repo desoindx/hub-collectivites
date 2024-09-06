@@ -1,6 +1,7 @@
 import { prisma } from "@/services/prisma";
 import { ProjectInfoFormData } from "@/forms/project/ProjectInfoFormSchema";
 import { Prisma } from "@prisma/client";
+import { UpdateProjectData } from "@/apiValidationSchema/updateProjectSchema";
 
 export const getProjectsByUserId = (userId: string) =>
   prisma.project.findMany({
@@ -53,5 +54,8 @@ export const createProject = (data: ProjectInfoFormData, ownerId: string) =>
       },
     },
   });
+
+export const updateProject = (projectId: string, data: UpdateProjectData) =>
+  prisma.project.update({ where: { id: projectId }, data: { name: data.name, description: data.description } });
 
 export type Project = Exclude<Awaited<ReturnType<typeof getProjectsByUserId>>, null>[number];
