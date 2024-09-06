@@ -1,6 +1,5 @@
 import { prisma } from "@/services/prisma";
 import { ProjectInfoFormData } from "@/forms/project/ProjectInfoFormSchema";
-import { Status } from "@prisma/client";
 
 export const getProjectsByUserId = (userId: string) =>
   prisma.project.findMany({
@@ -26,7 +25,7 @@ export const createProject = (data: ProjectInfoFormData, ownerId: string) =>
       name: data.nom,
       description: data.description,
       ownerUserId: ownerId,
-      status: Status.EN_COURS,
+      status: data.status,
       thematiques: data.thematiques,
       sousThematiques: data.sousThematiques,
       user_projects: {

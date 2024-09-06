@@ -1,4 +1,5 @@
 import { Status } from "@prisma/client";
+import { SelectOption } from "@/types/options";
 
 export const statusLabel: Record<Status, string> = {
   IDEE: "Idée",
@@ -9,3 +10,7 @@ export const statusLabel: Record<Status, string> = {
   ABANDONNE: "Abandonné",
   TERMINE: "Terminé",
 };
+
+export const statusProjectOptions: SelectOption[] = [
+  ...Object.entries(statusLabel).map((projectStatus) => ({ name: projectStatus[1], value: projectStatus[0] })),
+];

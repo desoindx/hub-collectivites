@@ -13,6 +13,8 @@ import { SousThematique, Thematique } from "@prisma/client";
 import { sousThematiquesInfo, thematiquesLabel } from "@/services/thematiques";
 import { useEffect } from "react";
 import MultipleSearchableSelectFormField from "@/components/SearchableSelect/MultipleSearchableSelectFormField";
+import SelectFormField from "@/components/SelectFormField";
+import { statusProjectOptions } from "@/services/status";
 
 export const ProjectInfoForm = () => {
   const router = useRouter();
@@ -61,6 +63,14 @@ export const ProjectInfoForm = () => {
           type="textarea"
           hint="Précisez en quelques mots le contexte du projet, ses bénéficiaires et ses objectifs."
           rows={6}
+        />
+        <SelectFormField
+          label={"Avancement du projet"}
+          path={"status"}
+          control={form.control}
+          options={statusProjectOptions}
+          placeholder="Selectionnez un niveau d'avancement du projet"
+          asterisk
         />
         <MultipleSearchableSelectFormField
           path="thematiques"
