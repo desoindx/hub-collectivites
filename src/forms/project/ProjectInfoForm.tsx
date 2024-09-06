@@ -15,12 +15,13 @@ import { useEffect } from "react";
 import MultipleSearchableSelectFormField from "@/components/SearchableSelect/MultipleSearchableSelectFormField";
 import SelectFormField from "@/components/SelectFormField";
 import { statusProjectOptions } from "@/services/status";
+import CollectiviteInputFormField from "@/components/CollectiviteInputFormField";
 
 export const ProjectInfoForm = () => {
   const router = useRouter();
   const form = useForm<ProjectInfoFormData>({
     resolver: zodResolver(ProjectInfoFormSchema),
-    defaultValues: { nom: "", description: "", thematiques: [], sousThematiques: [] },
+    defaultValues: { nom: "", description: "", thematiques: [], sousThematiques: [], collectivite: "" },
   });
 
   const selectedThematiques = form.watch("thematiques");
@@ -54,6 +55,12 @@ export const ProjectInfoForm = () => {
           label="Intitulé du projet"
           asterisk
           hint="Il doit être court et précis. Le nom de la collectivite ou du programme n'est pas nécesaire."
+        />
+        <CollectiviteInputFormField
+          control={form.control}
+          path="collectivite"
+          label="Collectivité du projet"
+          asterisk
         />
         <InputFormField
           control={form.control}

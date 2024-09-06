@@ -1,5 +1,6 @@
 import { prisma } from "@/services/prisma";
 import { ProjectInfoFormData } from "@/forms/project/ProjectInfoFormSchema";
+import { Prisma } from "@prisma/client";
 
 export const getProjectsByUserId = (userId: string) =>
   prisma.project.findMany({
@@ -24,14 +25,30 @@ export const createProject = (data: ProjectInfoFormData, ownerId: string) =>
     data: {
       name: data.nom,
       description: data.description,
-      ownerUserId: ownerId,
       status: data.status,
       thematiques: data.thematiques,
       sousThematiques: data.sousThematiques,
+      owner: { connect: { id: ownerId } },
       user_projects: {
         create: {
           user_id: ownerId,
           role: "ADMIN",
+        },
+      },
+      collectivite: {
+        connectOrCreate: {
+          where: {
+            code_insee: data.collectivite.codeInsee,
+          },
+          create: {
+            name: data.collectivite.nomCollectivite,
+            code_postal: data.collectivite.codePostal,
+            code_insee: data.collectivite.codeInsee,
+            ban_id: data.collectivite.banId,
+            adresse_info: data.collectivite.banInfo as Prisma.JsonObject,
+            latitude: data.collectivite.lat,
+            longitude: data.collectivite.long,
+          },
         },
       },
     },
