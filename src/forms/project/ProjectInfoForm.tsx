@@ -13,12 +13,15 @@ import { SousThematique, Thematique } from "@prisma/client";
 import { sousThematiquesInfo, thematiquesLabel } from "@/services/thematiques";
 import { useEffect } from "react";
 import MultipleSearchableSelectFormField from "@/components/SearchableSelect/MultipleSearchableSelectFormField";
+import SelectFormField from "@/components/SelectFormField";
+import { statusProjectOptions } from "@/services/status";
+import CollectiviteInputFormField from "@/components/CollectiviteInputFormField";
 
 export const ProjectInfoForm = () => {
   const router = useRouter();
   const form = useForm<ProjectInfoFormData>({
     resolver: zodResolver(ProjectInfoFormSchema),
-    defaultValues: { nom: "", description: "", thematiques: [], sousThematiques: [] },
+    defaultValues: { nom: "", description: "", thematiques: [], sousThematiques: [], collectivite: "" },
   });
 
   const selectedThematiques = form.watch("thematiques");
@@ -53,6 +56,12 @@ export const ProjectInfoForm = () => {
           asterisk
           hint="Il doit être court et précis. Le nom de la collectivite ou du programme n'est pas nécesaire."
         />
+        <CollectiviteInputFormField
+          control={form.control}
+          path="collectivite"
+          label="Collectivité du projet"
+          asterisk
+        />
         <InputFormField
           control={form.control}
           path="description"
@@ -61,6 +70,14 @@ export const ProjectInfoForm = () => {
           type="textarea"
           hint="Précisez en quelques mots le contexte du projet, ses bénéficiaires et ses objectifs."
           rows={6}
+        />
+        <SelectFormField
+          label={"Avancement du projet"}
+          path={"status"}
+          control={form.control}
+          options={statusProjectOptions}
+          placeholder="Selectionnez un niveau d'avancement du projet"
+          asterisk
         />
         <MultipleSearchableSelectFormField
           path="thematiques"
