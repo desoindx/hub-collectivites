@@ -21,7 +21,7 @@ export const ProjectInfoForm = () => {
   const router = useRouter();
   const form = useForm<ProjectInfoFormData>({
     resolver: zodResolver(ProjectInfoFormSchema),
-    defaultValues: { nom: "", description: "", thematiques: [], sousThematiques: [], collectivite: "" },
+    defaultValues: { nom: "", description: "", thematiques: [], sousThematiques: [] },
   });
 
   const selectedThematiques = form.watch("thematiques");
