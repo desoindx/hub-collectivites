@@ -30,9 +30,12 @@
   width: max-content;
 }
 
+.button {
+  max-width: 25rem !important;
+}
+
 .description {
   display: block;
-  width: max-content;
   margin-bottom: 0;
 }
 
