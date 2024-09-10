@@ -84,12 +84,12 @@ async function main() {
       },
       {
         serviceId: (services.find((service) => service.name === "Sample service 2") as Service).id,
-        thematiques: [Thematique.tet_2],
+        thematiques: [Thematique.CULTURE],
         description: "Avoir des infos sur l'efficacité d'un projet culture",
       },
       {
         serviceId: (services.find((service) => service.name === "Sample service 2") as Service).id,
-        thematiques: [Thematique.tet_3],
+        thematiques: [Thematique.EAU],
         description: "Avoir des infos sur l'efficacité d'un projet eau",
         projectLabel: "Decouvrir les possibilités avec l'eau",
         newProjectLabel: "Voir l'eau économisé",
