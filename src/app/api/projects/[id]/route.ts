@@ -13,7 +13,7 @@ export async function GET(req: NextRequest, context: { params: { id: string } })
   return NextResponse.json("Not found", { status: 404 });
 }
 
-export async function PUT(req: NextRequest, context: { params: { id: string } }) {
+export async function POST(req: NextRequest, context: { params: { id: string } }) {
   const body = await req.json();
 
   const project = await getProjectById(context.params.id);
