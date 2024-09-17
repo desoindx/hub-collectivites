@@ -133,12 +133,14 @@ model Service {
 }
 
 model ServiceContext {
-  id              String       @id @default(cuid())
+  id              String           @id @default(cuid())
   serviceId       String
-  service         Service      @relation(fields: [serviceId], references: [id])
+  service         Service          @relation(fields: [serviceId], references: [id])
   description     String?
   newProjectUrl   String?
   thematiques     Thematique[]
+  sousThematiques SousThematique[]
+  statuses        Status[]
   projectLabel    String?
   newProjectLabel String?
 }
