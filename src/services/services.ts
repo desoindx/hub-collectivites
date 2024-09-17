@@ -7,6 +7,7 @@ export const getProjectInServiceById = async (project: Project) => {
     include: {
       contexts: true,
     },
+    orderBy: { id: "asc" },
   });
 
   return Promise.all(
@@ -47,15 +48,21 @@ export const getProjectInServiceById = async (project: Project) => {
         };
 
         try {
-          const { data } = await axios.get<{
-            url: string;
-            iframe?: string;
-            data: any;
-          }>(service.projectUrl.replace("${id}", project.id));
-          return {
-            service: serviceData,
-            project: data,
-          };
+          if (service.projectUrl) {
+            const { data } = await axios.get<{
+              url: string;
+              iframe?: string;
+              data: any;
+            }>(service.projectUrl.replace("${id}", project.id));
+            return {
+              service: serviceData,
+              project: data,
+            };
+          } else {
+            return {
+              service: serviceData,
+            };
+          }
         } catch {
           return {
             service: serviceData,

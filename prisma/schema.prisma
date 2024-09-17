@@ -125,7 +125,7 @@ model Service {
   slug            String
   logo            String
   description     String
-  projectUrl      String
+  projectUrl      String?
   newProjectUrl   String
   projectLabel    String?
   newProjectLabel String?
