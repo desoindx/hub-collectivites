@@ -14,11 +14,16 @@ export const getProjectInServiceById = async (project: Project) => {
       .map((service) => {
         const context = service.contexts.find(
           (context) =>
-            !context.thematiques ||
-            context.thematiques.length === 0 ||
-            context.thematiques.some((thematique) => project.thematiques.includes(thematique)),
+            (!context.thematiques ||
+              context.thematiques.length === 0 ||
+              context.thematiques.some((thematique) => project.thematiques.includes(thematique))) &&
+            (!context.sousThematiques ||
+              context.sousThematiques.length === 0 ||
+              context.sousThematiques.some((sousThematique) => project.sousThematiques.includes(sousThematique))) &&
+            (!context.statuses ||
+              context.statuses.length === 0 ||
+              context.statuses.some((status) => project.status === status)),
         );
-        console.log(context);
         return context
           ? {
               ...service,
