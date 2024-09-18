@@ -6,7 +6,7 @@ import Options from "./Options";
 import { SelectOption } from "@/types/options";
 import { OptionBadge, SelectOptionValid } from "./OptionBadge";
 
-const DEFAULT_LIMIT = 5;
+const DEFAULT_LIMIT = 100;
 
 export type MultipleSearchableSelectProps = {
   value: string[];
